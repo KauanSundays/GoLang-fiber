@@ -6,6 +6,12 @@ import(
 	"https://github.com/joho/godotenv" 
 ) // required packages
 
+type Book struct{
+	Author  string `json:"author"`
+	Title    string `json:"title"`
+	Publisher  string `json:"publisher"`
+}
+
 type Repository struct{
 	DB *gorm.DB
 }
@@ -23,6 +29,12 @@ func main(){ // Load ambient variables
 	err := godotenv.Load(".env") //  Load  .env file
 	if err != nil {
 		log.Fatal(err)
+	}
+
+	db, err := storage.NewConnection(config)
+
+	if err != mil {
+		log.Fatal('could not load the database')
 	}
 
 	r := Repository {
