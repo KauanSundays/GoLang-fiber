@@ -12,6 +12,11 @@ type Repository struct{
 
 func(r *Repository) SetupRoutes(app *fiber.App) {
 	api := app.Group("/api")
+
+	api.Post("/create_books", r.CreateBook)
+	api.Delete("/delete_book/:id", r.DeleteBook)
+	api.Get("/get_books/:id", r.GetBooksById)
+	api.Get("/get_books", r.GetBooks)
 }
 
 func main(){ // Load ambient variables 
