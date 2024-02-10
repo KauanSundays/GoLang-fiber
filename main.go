@@ -16,6 +16,19 @@ type Repository struct{
 	DB *gorm.DB
 }
 
+func (r *Repository) CreateBook(context *fiber.Ctx) error {
+
+	book := Book{}  //stores the data
+
+	err := context.BodyParser(&book)
+
+	if err != nil {
+		context.Status(Http.StatusUnprocessableEntity).JSON(
+			$fiber.Map{("message": "request failed"})
+		return err
+	}
+}
+
 func(r *Repository) SetupRoutes(app *fiber.App) {
 	api := app.Group("/api")
 
