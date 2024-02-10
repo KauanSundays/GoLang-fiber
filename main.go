@@ -27,6 +27,17 @@ func (r *Repository) CreateBook(context *fiber.Ctx) error {
 			$fiber.Map{("message": "request failed"})
 		return err
 	}
+
+	if err!= nil {
+		context.Status(http.StatusBadRequest).JSON( //erro 400
+			&fiber.Map{"error":"could not create book"})
+			return err
+		)
+	}
+
+	context.Status(http.StatusOK).JSON(&fiber.Map{ // status 200
+		"message": "Top, it's added"
+	}) 
 }
 
 func(r *Repository) SetupRoutes(app *fiber.App) {
