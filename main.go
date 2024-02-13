@@ -50,6 +50,12 @@ func (r *Repository) GetBooks(context *fiber.Ctx)  error {
 			&fiber.Map{"message": "Couldn't get books"})
 			return err
 	}
+	
+	context.Status(http.StatusOK).JSON(&fiber.Map{
+		"message": "books fetched succesfully",
+		"data":     bookModels,
+	})
+	return nil
 
 func(r *Repository) SetupRoutes(app *fiber.App) {
 	api := app.Group("/api")
