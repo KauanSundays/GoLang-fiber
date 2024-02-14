@@ -1,10 +1,10 @@
-package models
+package models //model
 
 import "gorm.io/gorm"
 
 type Books  struct {
-	ID
-	Author
-	Title
-	Publisher
+	ID 			 uint  `gorm: "primary key;autoIncrement" json:"id"` //Other options in gorm doc
+	Author 		*string    `json:"author"`
+	Title 		*string    `json:"title"`
+	Publisher	*string    `json:"publisher"`
 }
