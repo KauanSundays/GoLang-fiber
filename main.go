@@ -1,9 +1,14 @@
 package main
 
-import(
-	"github.com/gofiber/fiber/v3" // fast framework 
-	"gorm.io/gorm" // relationship databases
-	"https://github.com/joho/godotenv" 
+import (
+	"log"
+	"https://github.com/joho/godotenv"
+	"os"
+	"https://github.com/KauanSundays/GoLang-fiber/models"
+	"https://github.com/KauanSundays/GoLang-fiber/storage"
+	"github.com/gofiber/fiber/v3" // fast framework
+	"github.com/joho/godotenv"
+	"gorm.io/gorm"                // relationship databases
 ) // required packages
 
 type Book struct{
@@ -70,6 +75,15 @@ func main(){ // Load ambient variables
 	err := godotenv.Load(".env") //  Load  .env file
 	if err != nil {
 		log.Fatal(err)
+	}
+
+	config := &storage.Config{
+		Host: 		os.Getenv("DB_HOST"),
+ 		Port:		os.Getenv("DB_PORT"),
+	    Password:	os.Getenv("DB_PASS"),
+	    User: 		os.Getenv("DB_USER"),
+		SSLMode:    os.Getenv("DB_SSLMODE"),
+		DBName: 	os.Getenv("DB_NAME"),
 	}
 
 	db, err := storage.NewConnection(config)
