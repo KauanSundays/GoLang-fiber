@@ -7,10 +7,14 @@ import(
 )
 
 type Config struct {
-	Host
-	Port
-	Password
-	User
-	DBName
-	SSLMode
+	Host		string
+	Port		string
+	Password	string
+	User		string
+	DBName		string
+	SSLMode	
+}
+
+func NewConnection(config *Config)(*gorm.DB, error) {
+	
 }
