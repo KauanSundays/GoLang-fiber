@@ -12,9 +12,11 @@ type Config struct {
 	Password	string
 	User		string
 	DBName		string
-	SSLMode	
+	SSLMode		string
 }
 
 func NewConnection(config *Config)(*gorm.DB, error) {
-	
+	dsn : fmt.Sprintf(
+		"host=%s  port=%s user=%s password=%s dbname=%s sslmode=%s", 
+	)
 }
